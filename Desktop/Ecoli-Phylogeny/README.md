@@ -1,16 +1,31 @@
-# E. coli Phylogeny with Parsnp + FastTree
+# E. coli Phylogeny Project
 
-This repository contains a pipeline and results for building a core-genome phylogenetic tree of *E. coli* genomes using Parsnp and FastTree.
+This repository contains my work on building a **phylogenetic tree of *Escherichia coli* genomes** as part of my research project. The goal was to analyze hundreds of *E. coli* genomes, align them, and reconstruct a tree showing their evolutionary relationships.
 
-## Files
-- `build_tree_parsnp.py` – Python script to run Parsnp on a folder of genomes and generate SNP alignments.
-- `results/fasttree_output.tree` – Phylogenetic tree (Newick format) of 94 genomes.
-- `results/log/` – Log files from Parsnp/RAxML runs.
+---
 
-## Usage
-1. Install Docker, Parsnp, and FastTree.
-2. Place genome `.fasta` files in a folder.
-3. Run:
-   ```bash
-   python3 build_tree_parsnp.py
+## What I Did
+
+1. **Collected genomes**  
+   - Started with ~625 *E. coli* genomes in FASTA format.  
+   - Cleaned and organized them into a consistent format for analysis.  
+
+2. **Built a pipeline**  
+   - Wrote `build_tree_parsnp.py`, a Python script that:  
+     - Filters genomes against a reference.  
+     - Runs [Parsnp](https://github.com/marbl/parsnp) inside Docker to generate a core-genome alignment.  
+     - Uses [FastTree](http://www.microbesonline.org/fasttree/) to reconstruct the phylogenetic tree from SNPs.  
+
+3. **Generated results**  
+   - After filtering, **94 genomes** were included in the final analysis.  
+   - Parsnp outputs SNP alignments (`parsnp.snps.mblocks`).  
+   - FastTree generated a Newick tree (`fasttree_output.tree`).  
+
+4. **Visualized the tree**  
+   - The `.tree` file can be visualized in tools like [iTOL](https://itol.embl.de/) or FigTree.  
+   - Produced a circular phylogenetic tree showing how the 94 genomes cluster.
+
+---
+
+## Repository Structure
 
